@@ -39,7 +39,8 @@ async def start(bot, update):
     )
 
 
-thumb = "to store path of the recent sended thumb"
+# global variable to store path of the recent sended thumbnail
+thumb = ""
 
 @Bot.on_message(filters.private & (filters.video | filters.document))
 async def thumb_change(bot, m):
