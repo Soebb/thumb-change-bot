@@ -51,8 +51,10 @@ async def thumb_change(bot, m):
     await msg.delete()
     answer = await bot.ask(m.chat.id,'Now send the thumbnail' + ' or /keep to keep the previous thumb' if thumb, filters=filters.photo | filters.text)
     if answer.photo:
-        if thumb:
+        try:
             os.remove(thumb)
+        except:
+            pass
         thumb = await bot.download_media(message=answer.photo)
     msg = await m.reply("`Uploading..`", parse_mode='md')
     c_time = time.time()
